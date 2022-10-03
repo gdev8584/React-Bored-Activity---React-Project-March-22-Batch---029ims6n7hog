@@ -1,6 +1,5 @@
-import React from 'react'
 import '../styles/App.css';
-import {useState, useEffect} from 'react';
+import React,{useState, useEffect} from 'react';
 
 const Loader = () => <div id="loader">Loading...</div>
 
@@ -11,11 +10,8 @@ const App = () => {
   const makeURL = async (type) =>{
     const data = await fetch(`https://www.boredapi.com/api/activity?type=${type}`)
     const response = await data.json();
-    setTimeout(()=>{
-      setLoading(false);
-      setData(response.activity);
-    },1000)
-    setLoading(true);
+      setLoading(false)
+      setData(response.activity)
   }
   
   useEffect(()=>{
@@ -23,9 +19,11 @@ const App = () => {
   },[])
 
   const handleR =()=>{
+    setLoading(true)
     makeURL("recreational")
   }
   const handleE =()=>{
+    setLoading(true)
     makeURL("education")
   }
   return (
