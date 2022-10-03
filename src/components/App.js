@@ -5,13 +5,17 @@ import {useState, useEffect} from 'react';
 const Loader = () => <div id="loader">Loading...</div>
 
 const App = () => {
-  const [data,setData] = useState("");
+  const [data,setData] = useState({});
   const [loading,setLoading] = useState(true)
+ 
   const makeURL = async (type) =>{
     const data = await fetch(`https://www.boredapi.com/api/activity?type=${type}`)
     const response = await data.json();
-    setLoading(false);
-    setData(response.activity);
+    setTimeout(()=>{
+      setLoading(false);
+      setData(response.activity);
+    },1000)
+    setLoading(true);
   }
   
   useEffect(()=>{
