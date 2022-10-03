@@ -19,9 +19,11 @@ const App = () => {
   },[])
 
   const handleR =()=>{
+    setLoading(true)
     makeURL("recreational")
   }
   const handleE =()=>{
+    setLoading(true)
     makeURL("education")
   }
   return (
