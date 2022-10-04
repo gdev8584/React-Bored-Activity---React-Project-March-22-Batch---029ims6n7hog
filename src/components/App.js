@@ -7,12 +7,21 @@ const App = () => {
   const [data,setData] = useState("");
   const [loading,setLoading] = useState(true)
  
-  const makeURL = async (type) =>{
-    const data = await fetch(`https://www.boredapi.com/api/activity?type=${type}`)
-    const response = await data.json();
-    setLoading(false)
-    setData(response.activity)
-  }
+//   const makeURL = async (type) =>{
+//     const data = await fetch(`https://www.boredapi.com/api/activity?type=${type}`)
+//     const response = await data.json();
+//     setLoading(false)
+//     setData(response.activity)
+//   }
+  
+  const makeURL = (type) => {
+    fetch(`https://www.boredapi.com/api/activity?type=${type}`
+    ).then((resp)=>{
+      return resp.json()}).then((dat)=>{
+      setLoading(false);
+      setData(dat.activity);
+    })
+  };
   
   useEffect(()=>{
     makeURL("education")
