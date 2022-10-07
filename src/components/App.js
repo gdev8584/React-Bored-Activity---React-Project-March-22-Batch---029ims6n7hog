@@ -13,9 +13,9 @@ const App = () => {
 //     setLoading(false)
 //     setData(response.activity)
 //   }
-  
-  const makeURL = (type) => {
-    fetch(`https://www.boredapi.com/api/activity?type=${type}`
+const makeURL = (type) => `http://www.boredapi.com/api/activity?type=${type}`
+  const makeCall = (type) => {
+    fetch(makeURL(type)
     ).then((resp)=>{
       return resp.json()}).then((dat)=>{
       setLoading(false);
@@ -24,16 +24,16 @@ const App = () => {
   };
   
   useEffect(()=>{
-    makeURL("education")
+    makeCall("education")
   },[])
 
   const handleR =()=>{
     setLoading(true)
-    makeURL("recreational")
+    makeCall("recreational")
   }
   const handleE =()=>{
     setLoading(true)
-    makeURL("education")
+    makeCall("education")
   }
   return (
     <div id="activity">
